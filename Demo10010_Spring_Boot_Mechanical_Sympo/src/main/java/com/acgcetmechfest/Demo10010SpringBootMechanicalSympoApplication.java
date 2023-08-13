@@ -9,7 +9,6 @@ public class Demo10010SpringBootMechanicalSympoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Demo10010SpringBootMechanicalSympoApplication.class, args);
-	
 	}
 
 }
