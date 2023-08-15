@@ -45,7 +45,7 @@ public class MainController {
 		
 		model.addAttribute("suggestion", new Suggestion());
 		
-		return "pages/home";
+		return "home";
 	}
 	
 	@GetMapping(value = "/about")
