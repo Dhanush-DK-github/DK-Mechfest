@@ -48,6 +48,12 @@ public class MainController {
 		return "home";
 	}
 	
+	@GetMapping(value = {"/error"})
+	public String showErrorPage() {
+		
+		return "error";
+	}
+	
 	@GetMapping(value = "/about")
 	public String showAboutPage(Model model, @ModelAttribute("message") String message) {
 		
