@@ -51,7 +51,7 @@ public class MainController {
 	@GetMapping(value = {"/error"})
 	public String showErrorPage() {
 		
-		return "/Demo10010_Spring_Boot_Mechanical_Sympo/src/main/webapp/pages/error.html";
+		return "/webapp/pages/error.jsp";
 	}
 	
 	@GetMapping(value = "/about")
