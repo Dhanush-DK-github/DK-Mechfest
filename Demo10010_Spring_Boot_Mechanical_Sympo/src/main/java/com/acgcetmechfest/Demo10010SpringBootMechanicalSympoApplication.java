@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication(scanBasePackages = "com.acgcetmechfest")
-@EnableWebMvc
 public class Demo10010SpringBootMechanicalSympoApplication {
 
 	public static void main(String[] args) {
