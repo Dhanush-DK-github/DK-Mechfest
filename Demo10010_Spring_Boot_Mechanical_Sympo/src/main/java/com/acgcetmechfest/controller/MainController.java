@@ -41,17 +41,17 @@ public class MainController {
 	@GetMapping(value = {"/", "/home"})
 	public String showHomePage(Model model, @ModelAttribute("message") String message) {
 		System.out.println("hello");
-		model.addAttribute("message", message);
+//		model.addAttribute("message", message);
+//		
+//		model.addAttribute("suggestion", new Suggestion());
 		
-		model.addAttribute("suggestion", new Suggestion());
-		
-		return "/pages/home.jsp";
+		return "/Demo10010_Spring_Boot_Mechanical_Sympo/src/main/webapp/pages/home.jsp";
 	}
 	
 	@GetMapping(value = {"/error"})
 	public String showErrorPage() {
 		
-		return "error";
+		return "/Demo10010_Spring_Boot_Mechanical_Sympo/src/main/webapp/pages/error.html";
 	}
 	
 	@GetMapping(value = "/about")
