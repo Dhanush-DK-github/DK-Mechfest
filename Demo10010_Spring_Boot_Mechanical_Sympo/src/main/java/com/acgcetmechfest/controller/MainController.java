@@ -40,12 +40,12 @@ public class MainController {
 	
 	@GetMapping(value = {"/", "/home"})
 	public String showHomePage(Model model, @ModelAttribute("message") String message) {
-		
+		System.out.println("hello");
 		model.addAttribute("message", message);
 		
 		model.addAttribute("suggestion", new Suggestion());
 		
-		return "dummy.jsp";
+		return "home";
 	}
 	
 	@GetMapping(value = {"/error"})
