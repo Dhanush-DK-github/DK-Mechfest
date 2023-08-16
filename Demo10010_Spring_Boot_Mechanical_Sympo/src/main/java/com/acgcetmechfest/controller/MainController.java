@@ -48,6 +48,12 @@ public class MainController {
 		return "home";
 	}
 	
+	@GetMapping(value = {"/index"})
+	public String showIndexPage() {
+		
+		return "index";
+	}
+	
 	@GetMapping(value = {"/error"})
 	public String showErrorPage() {
 		
