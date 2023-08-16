@@ -51,7 +51,7 @@ public class MainController {
 	@GetMapping(value = {"/error"})
 	public String showErrorPage() {
 		
-		return "/webapp/pages/error.jsp";
+		return "error.jsp";
 	}
 	
 	@GetMapping(value = "/about")
