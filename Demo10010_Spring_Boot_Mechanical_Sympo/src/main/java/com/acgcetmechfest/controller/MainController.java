@@ -45,7 +45,7 @@ public class MainController {
 		
 		model.addAttribute("suggestion", new Suggestion());
 		
-		return "Hello World!";
+		return "home";
 	}
 	
 	@GetMapping(value = {"/error"})
