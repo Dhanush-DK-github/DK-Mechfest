@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:8-jre-slim
-COPY --from=build /target/Demo10010_Spring_Boot_Mechanical_Sympo-0.0.1-SNAPSHOT.war Demo10010_Spring_Boot_Mechanical_Sympo.war
+COPY --from=build /target/Demo10010_Spring_Boot_Mechanical_Sympo-0.0.1-SNAPSHOT.jar Demo10010_Spring_Boot_Mechanical_Sympo.jar
 EXPOSE 8080
-ENTRYPOINT [ "java","-war","Demo10010_Spring_Boot_Mechanical_Sympo.war" ]
+ENTRYPOINT [ "java","-jar","Demo10010_Spring_Boot_Mechanical_Sympo.jar" ]

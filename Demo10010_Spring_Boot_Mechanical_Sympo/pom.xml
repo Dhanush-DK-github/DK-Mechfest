@@ -11,7 +11,7 @@
 	<groupId>com.acgcetmechfest</groupId>
 	<artifactId>Demo10010_Spring_Boot_Mechanical_Sympo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>Demo10010_Spring_Boot_Mechanical_Sympo</name>
 	<description>Mechanical Symposium Website</description>
 	<properties>
