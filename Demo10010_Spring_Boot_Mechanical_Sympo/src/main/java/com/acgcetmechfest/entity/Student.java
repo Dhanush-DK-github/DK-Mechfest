@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +19,8 @@ import javax.persistence.Table;
 public class Student {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(generator = "STUD_SEQ", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "STUD_SEQ", sequenceName = "MY_STUD_SEQ", initialValue=100, allocationSize=1)
 	@Column(name = "student_detail_ID")
 	private Integer id;
 	@Column(name = "student_name")

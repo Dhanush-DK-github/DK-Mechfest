@@ -40,24 +40,12 @@ public class MainController {
 	
 	@GetMapping(value = {"/", "/home"})
 	public String showHomePage(Model model, @ModelAttribute("message") String message) {
-		System.out.println("hello");
+		
 		model.addAttribute("message", message);
 		
 		model.addAttribute("suggestion", new Suggestion());
 		
 		return "home";
-	}
-	
-	@GetMapping(value = {"/index"})
-	public String showIndexPage() {
-		
-		return "index";
-	}
-	
-	@GetMapping(value = {"/error"})
-	public String showErrorPage() {
-		
-		return "error";
 	}
 	
 	@GetMapping(value = "/about")
@@ -114,11 +102,10 @@ public class MainController {
 			model.addAttribute("typeName", typeName);
 		}
 		model.addAttribute("registration", newRegistration);
-		
+
 		model.addAttribute("message", message);
 		
 		model.addAttribute("suggestion", new Suggestion());
-		System.out.println(typeName);
 		
 		return "registration";
 	}
@@ -167,10 +154,6 @@ public class MainController {
 				
 				redirectAttr.addFlashAttribute("type", typeExists);
 				
-				Registration newRegistration = new Registration();
-
-				model.addAttribute("registration", newRegistration);
-				
 				return "redirect:/register";
 			}
 			
@@ -179,8 +162,6 @@ public class MainController {
 
 	@PostMapping(value = "/saveRegistration")
 	public String createNewRegistrationEntry(@ModelAttribute("registration") Registration newRegistration, RedirectAttributes redirectAttr) {
-		
-		System.out.println(newRegistration);
 		
 		String message = registrationService.addNewRegistration(newRegistration);
 		
@@ -198,8 +179,6 @@ public class MainController {
 	@PostMapping(value = "/{page}/sendSuggestion")
 	public String sendSuggestionForm(@PathVariable String page, @ModelAttribute("suggestion") Suggestion newSuggestion, RedirectAttributes redirectAttr) {
 		
-		System.out.println(newSuggestion);
-		
 		String message = registrationService.addNewSuggestion(newSuggestion);
 		
 		redirectAttr.addFlashAttribute("message", message);
@@ -210,7 +189,6 @@ public class MainController {
 	@PostMapping("/events/{sympo}/{page}/sendSuggestion")
 	public String sendSuggestionFormForSpecificEvents(@PathVariable String sympo, @PathVariable String page, @ModelAttribute("suggestion") Suggestion newSuggestion, RedirectAttributes redirectAttr) {
 		
-		System.out.println(newSuggestion);
 		
 		String message = registrationService.addNewSuggestion(newSuggestion);
 		

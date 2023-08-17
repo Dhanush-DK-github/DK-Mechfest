@@ -17,12 +17,14 @@ import com.acgcetmechfest.entity.Student;
 @Transactional
 public interface RegistrationRepository extends JpaRepository<Registration, Integer>{
 	
+//	@Query(value="ALTER TABLE registration AUTO_INCREMENT = 2024000", nativeQuery=true)
 	@Modifying
-	@Query(value="ALTER TABLE registration AUTO_INCREMENT = 2024000", nativeQuery=true)
+	@Query(value="ALTER TABLE registration ALTER COLUMN registration_id  RESTART WITH 2024000", nativeQuery=true)
 	void alterRegistrationIdValues();
 	
+//	@Query(value="ALTER TABLE student_details AUTO_INCREMENT = 100", nativeQuery=true)
 	@Modifying
-	@Query(value="ALTER TABLE student_details AUTO_INCREMENT = 100", nativeQuery=true)
+	@Query(value="ALTER TABLE student_details ALTER COLUMN student_detail_id  RESTART WITH 100", nativeQuery=true)
 	void alterStudentDetailsIdValues();
 	
 	@Query("select s from Registration r join r.students s where r.type= :type and r.name = :name and s.emailId = :emailId and s.mobileNo = :mobileNo")

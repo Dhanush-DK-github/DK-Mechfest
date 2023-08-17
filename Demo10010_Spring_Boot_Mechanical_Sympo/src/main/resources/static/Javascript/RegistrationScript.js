@@ -359,6 +359,7 @@ $(document).click(function (event) {
 
         if(header_nav_tab_id.includes("fuel")){
         	
+        	
         	activeForm = document.querySelector("#fuel-registration-form");
         	
             removeSelectCategoryData(shackles);
@@ -375,6 +376,7 @@ $(document).click(function (event) {
         }
 
         else if(header_nav_tab_id.includes("shackles")){
+        	
         	
         	activeForm = document.querySelector("#shackles-registration-form");
 

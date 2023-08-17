@@ -12,12 +12,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Registration {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(generator = "REG_SEQ", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "REG_SEQ", sequenceName = "MY_REG_SEQ", initialValue=2024000, allocationSize=1)
 	@Column(name= "registration_ID")
 	private Integer registrationId;
 	private String type;

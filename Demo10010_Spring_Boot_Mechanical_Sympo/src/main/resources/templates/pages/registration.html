@@ -32,7 +32,7 @@
 		<div class="position-fixed top-0 end-0 p-5 mt-4" id="toaster" style="z-index: 100;">
 	        <div id="toastElement" class="toast align-items-center text-center text-bg-success border-0" role="alert" data-bs-autohide="false" aria-live="assertive" aria-atomic="true">
 	            <div class="d-flex">
-	              <div class="toast-body">
+	              <div class="toast-body align-items-center text-center">
 	                
 	              </div>
 	              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -128,7 +128,7 @@
                 <div class="row p-5 align-items-center justify-content-center text-start">
                     <div class="col mt-3">
                         <nav class="nav nav-tabs nav-justified justify-content-md-center" id="section-navs" role="tablist">    
-                            <button class="nav-link active section-tab" id="section-fuel-tab" data-bs-toggle="tab" data-bs-target="#nav-fuel" type="button" role="tab">FUEL</button>
+                            <button class="nav-link active section-tab" id="section-fuel-tab" data-bs-toggle="tab" data-bs-target="#nav-fuel" type="button" role="tab" >FUEL</button>
                             
                             <button class="nav-link section-tab" id="section-shackles-tab" data-bs-toggle="tab" data-bs-target="#nav-shackles" type="button" role="tab">SHACKLES</button>
 
@@ -206,7 +206,7 @@
                                     <div id="shacklesForm">
                                         <div class="row mt-3 text-start">
                                             <div class="col-12">
-                                                <form action="#" th:action="@{saveRegistration}" method="post" class="registration-form" id="shackles-registration-form" autocomplete="off" onsubmit="return validateRegistrationForm(this)" th:object="${registration}" novalidate>
+                                                <form action="#" th:action="@{saveRegistration}" th:method="post" class="registration-form" id="shackles-registration-form" autocomplete="off" onsubmit="return validateRegistrationForm(this)" th:object="${registration}" novalidate>
 
                                                     <div class="form-group input-field row align-items-center">
                                                         <label for="type" class="col-sm-4 col-form-label" style="display: none;">Type</label>
@@ -339,7 +339,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="d-flex justify-content-center mt-5 mt-md-0 map-section">
-                        <iframe width="450" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=ACGCET,%20Karaikudi&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <iframe id="map" width="450" height="450" src="https://maps.google.com/maps?q=ACGCET,%20Karaikudi&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -466,58 +466,61 @@
     </script>
     
 	<script th:inline="javascript">
-    	window.onload = function(){
-        	/*<![CDATA[*/
+		function checkMessage() {
+			/*<![CDATA[*/
 
         	var msg = [[${message}]];
         	/*]]>*/
     	let toastElement = document.getElementById("toastElement");
-    	
-    	if(msg.includes("Successfully")){
-    		toastElement.classList.add("text-bg-success");
-    		toastElement.classList.remove("text-bg-warning");
-    		toastElement.classList.remove("text-bg-danger");
-    		
-        	toastElement.querySelector(".toast-body").innerHTML=msg;
-        	if(!(msg.includes("Suggestion"))){
-        		toastElement.querySelector(".toast-body").innerHTML+="<br>Mail will be sent shortly.";	
-        	}
-        	let toast =  new bootstrap.Toast(toastElement);
-
-            toast.show();
-    	}
-    	else if(msg.includes("Something went wrong")){
-    		toastElement.classList.add("text-bg-danger");
-    		toastElement.classList.remove("text-bg-success");
-    		toastElement.classList.remove("text-bg-warning");
-    		
-        	toastElement.querySelector(".toast-body").innerHTML=msg;
-        	let toast =  new bootstrap.Toast(toastElement);
-
-            toast.show();
-    	}
-    	else if(msg.includes("already registered")){
-    		toastElement.classList.add("text-bg-warning");
-    		toastElement.classList.remove("text-bg-success");
-    		toastElement.classList.remove("text-bg-danger");
-    		
-        	toastElement.querySelector(".toast-body").innerHTML=msg;
-        	let toast =  new bootstrap.Toast(toastElement);
-
-            toast.show();
-    	}
-
-    }
+        	
+	    	if(msg.includes("Successfully")){
+	    		toastElement.classList.add("text-bg-success");
+	    		toastElement.classList.remove("text-bg-warning");
+	    		toastElement.classList.remove("text-bg-danger");
+	    		
+	        	toastElement.querySelector(".toast-body").innerHTML=msg;
+	        	if(!(msg.includes("Suggestion"))){
+	        		toastElement.querySelector(".toast-body").innerHTML+="<br>Mail will be sent shortly.";	
+	        	}
+	        	let toast =  new bootstrap.Toast(toastElement);
+	
+	            toast.show();
+	    	}
+	    	else if(msg.includes("Something went wrong")){
+	    		toastElement.classList.add("text-bg-danger");
+	    		toastElement.classList.remove("text-bg-success");
+	    		toastElement.classList.remove("text-bg-warning");
+	    		
+	        	toastElement.querySelector(".toast-body").innerHTML=msg;
+	        	let toast =  new bootstrap.Toast(toastElement);
+	
+	            toast.show();
+	    	}
+	    	else if(msg.includes("already registered")){
+	    		toastElement.classList.add("text-bg-warning");
+	    		toastElement.classList.remove("text-bg-success");
+	    		toastElement.classList.remove("text-bg-danger");
+	    		
+	        	toastElement.querySelector(".toast-body").innerHTML=msg;
+	        	let toast =  new bootstrap.Toast(toastElement);
+	
+	            toast.show();
+	    	}
+	
+		}
     </script>
     
-        <script th:inline="javascript">
-    window.onload = function(){
+    <script th:inline="javascript">
+    	window.onload = function(){
+    	
+    		checkMessage();
+    		
     	/*<![CDATA[*/
 
     	var type = [[${type}]];
     	var typeName = [[${typeName}]];
     	/*]]>*/
-    	if(type.includes("Fuel")){
+    	if(type!=null&&type.includes("Fuel")){
     		document.getElementById("section-fuel-tab").click();
 	   		if(typeName!=null||typeName!=""){
 	   			var el = document.querySelector('#fuel-event_name');
@@ -527,7 +530,7 @@
 	   			el.dispatchEvent(event);
 	   		}
     	}
-    	else if(type.includes("Shackles")){
+    	else if(type!=null&&type.includes("Shackles")){
     		document.getElementById("section-shackles-tab").click();
 	   		if(typeName!=null||typeName!=""){
 	   			var el = document.querySelector('#shackles-event_name');
@@ -537,7 +540,7 @@
 	   			el.dispatchEvent(event);
 	   		}
     	}
-    	else if(type.includes("Workshop")){
+    	else if(type!=null&&type.includes("Workshop")){
     		document.getElementById("section-workshop-tab").click();
 	   		if(typeName!=null||typeName!=""){
 	   			var el = document.querySelector('#workshop_name');

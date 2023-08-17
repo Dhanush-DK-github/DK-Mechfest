@@ -1,14 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib  uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DK MechFest - PPT</title>
+    <title>DK MechFest - Quiz</title>
     <link rel="stylesheet" href="../../CSS/HomeStyle.css">
     <link rel="stylesheet" href="../../CSS/AboutStyle.css">
     <link rel="stylesheet" href="../../CSS/EventsStyle.css">
@@ -20,15 +16,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Slab|Roboto|Roboto Serif|Roboto Condensed">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-   	<style>
+	
+	<style>
 		@media (max-width: 450px){
 		    #toaster{
 		        width:100%;
 		    }
 		 }
 	</style>
-
+	
 </head>
 <body>
 	<div class="position-fixed top-0 end-0 p-5 mt-4" id="toaster" style="z-index: 100;">
@@ -69,7 +65,7 @@
                 <div class="header-title" id="events-header-title">
                     <div class="row p-2 align-items-center justify-content-center">
                         <div class="col-10 text-center">
-                            <h1><span>PAPER PRESENTATION</span></h1>
+                            <h1><span>INQUIZITIVE</span></h1>
                         </div>
                     </div>
                 </div>
@@ -89,39 +85,35 @@
                             <div class="each_event_Content">
                                         <div class="row mt-3 text-center">
                                             <div class="col-12">
-                                                <h1>PAPER PRESENTATION <span>- MechTedx</span></h1>
+                                                <h1>IN<span>QUIZ</span>ITIVE <span>- Quiz / Mind Sport</span></h1>
                                             </div>
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-12">
-                                                <p>All you need to do is to fuel your brain to stimulate the ideas that never existed.The planet is all yours and come up with a spark of innovation to improve the lives around you.The stage has bee set to listen to your words. Hope you fulfill the expectation in the form of <span><i>Paper Presentation</i>.</span> Abstracts should be sent on or before <span><i>9th OCT 2023</i>.</span><br>
-                                                <i>Now the countdown starts, Rememer that your clock is ticking!</i></p>
+                                                <p>It is a mind sport in which players attempt to answer questions correctly on one or several specific topics.</p>
+                                                <p>Quiz questions will be come from Mechanical Engineering Topics.</p>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-12">
                                                 <h3><span><b>Rules:</b></span></h3>
                                                 <p><ul>
-                                                    <li>Maximum of 2 members in a team.</li>
-                                                    <li>Paper can be based on any technical key area related to Mechanical field.</li>
-                                                    <li>The Abstract should be within <span><b><i>250-300 words </i></b></span>with the title of the paper being crisp and clear.</li>
-                                                    <li>The paper should not exceed <span><b><i>15 pages</i></b></span>.</li>
-                                                    <li>Softcopy should be in the file format <span><b><i>".docx or.pdf"</i></b></span>.</li>
-                                                    <li>Team will be provided 7 mins to present your excellence followed b Q&A session for the last 3 mins respectively.</li>
-                                                    <li>The abstract should be attached to the mail id <span><b>- mechfest.2024@gmail.com</b></span> on or before 9th OCT 2023, beyond which submission of the papers will not be validated.</li>
-                                                    <li>Remember that your first impression is the best one, we expect the participants to maintain a <span><b><i>Formal Dress Code</i></b></span>.</li>
-                                                    <li>Softcopies with two hardcopy should be submitted to our event co-ordinators avilable at the workdesk, before the event.</li>
+                                                    <li>A Team of 2 members can participate.</li>
+                                                    <li>Quiz will have two rounds - Prelims and Finals.</li>
+                                                        <ul class="subList"><li>Prelims will be a written round.</li>
+                                                        <li>Top Teams from prelims will make it to the finals.</li></ul>
+                                                    <li>Both Prelims and Finals marks will be considered for Final Evaluation.</li>
                                                 </ul></p> 
                                             </div>
                                         </div>
                                         <div class="row mt-3 mb-5 text-center">
-                                            <a href="././Paper_Presentation/register"><button class="btn" id="eachEventRegisterButton">Register</button></a>
+                                            <a href="././Inquizitive/register"><button class="btn" id="eachEventRegisterButton">Register</button></a>
                                         </div>
                             </div>
                             <div class="PPT_Image">
                                     <div class="row mt-3">
                                         <div class="col-12">
-                                            <img src="../../CSS/images/EventsImages/PPT_image_1.jpg" alt="PPT Image" width="100%">
+                                            <img src="../../CSS/images/EventsImages/quiz_image_2.jpg" alt="PPT Image" width="100%">
                                         </div>
                                     </div>
                             </div>
@@ -141,41 +133,41 @@
                     <div class="card suggestion_form" id="suggestion-form">
                         <div class="card-header" id="suggestion-form-title"><span>Suggestion Box</span></div>
                         <div class="card-body">
-                            <form:form action="././Paper_Presentation/sendSuggestion" method="post" autocomplete="off" id="suggestion_form_label_input" onsubmit="return validateSuggestionForm(this)" novalidate="true" modelAttribute="suggestion">
+                            <form action="#" th:action="@{././Inquizitive/sendSuggestion}" th:method="post" autocomplete="off" id="suggestion_form_label_input" onsubmit="return validateSuggestionForm(this)" novalidate th:object="${suggestion}">
                                 <div class="mb-3">
                                     <label class="form-label" for="fullName">Full Name <span class="text-danger">*</span></label>
-                                    <form:input class="form-control" type="text" id="fullName" name="name" placeholder="Enter your name" pattern="^(?!\.)(?!.*\.$)(?!.*\.\.)([a-zA-Z.]+([\s][a-zA-Z.]+)*){2,}" required="required" path="${suggestion.name}"/>
+                                    <input class="form-control" type="text" id="fullName" name="name" placeholder="Enter your name" pattern="^(?!\.)(?!.*\.$)(?!.*\.\.)([a-zA-Z.]+([\s][a-zA-Z.]+)*){2,}" required="required" th:field="*{name}">
                                     <div class="valid-feedback">Valid Name</div>
                                     <div class="invalid-feedback">Invalid Name</div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="mobile">Mobile No. <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="tel" id="mobile" name="mobileNo" pattern="[0-9]{10}" placeholder="10 digit Mobile number" required="required" path="${suggestion.mobileNo}"/>
+                                    <input class="form-control" type="tel" id="mobile" name="mobileNo" pattern="[0-9]{10}" placeholder="10 digit Mobile number" required="required" th:field="*{mobileNo}">
                                     <div class="valid-feedback">Valid Mobile No.</div>
                                     <div class="invalid-feedback">Invalid Mobile No.</div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="email">E-Mail Address <span class="text-danger">*</span></label>
-                                    <form:input class="form-control" type="email" id="email" name="emailId" placeholder="Enter your Gmail address" pattern="^(?!\.)(?!.*\.$)(?!.*?\.\.)[a-z0-9]+[a-z.0-9]*[a-z]+[a-z.0-9]*[a-z0-9]+@gmail\.com$" required="required" path="${suggestion.emailId}"/>
+                                    <input class="form-control" type="email" id="email" name="emailId" placeholder="Enter your Gmail address" pattern="^(?!\.)(?!.*\.$)(?!.*?\.\.)[a-z0-9]+[a-z.0-9]*[a-z]+[a-z.0-9]*[a-z0-9]+@gmail\.com$" required="required" th:field="*{emailId}">
                                     <div class="valid-feedback" id="valid_msg">Valid Email</div>
                                     <div class="invalid-feedback" id="invalid_msg">Invalid Email</div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="suggestion">Message <span class="text-danger">*</span></label>
-                                    <form:textarea class="form-control" name="message" id="suggestion" rows="5" placeholder="Enter your message" required="required" path="${suggestion.message}"></form:textarea>
+                                    <textarea class="form-control" name="message" id="suggestion" rows="5" placeholder="Enter your message" required="required" th:field="*{message}"></textarea>
                                     <div class="valid-feedback">Thanks for your Suggestion</div>
                                     <div class="invalid-feedback">Enter your Suggestion</div>
                                 </div>
                                 <div class="mb-3 mt-5">
                                     <button type="submit" class="btn" id="suggestionSubmitButton">Submit</button>
                                 </div>
-                            </form:form>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="d-flex justify-content-center mt-5 mt-md-0 map-section">
-                        <iframe id = "map" width="450" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=ACGCET,%20Karaikudi&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <iframe id="map" width="450" height="450" src="https://maps.google.com/maps?q=ACGCET,%20Karaikudi&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -243,11 +235,14 @@
         }
     </script>
     
-   <script>
+    <script th:inline="javascript">
 	
     window.onload = function(){
     	
-    	var msg = "${message}";
+    	/*<![CDATA[*/
+
+    	var msg = [[${message}]];
+    	/*]]>*/
     	let toastElement = document.getElementById("toastElement");
     	
     	if(msg.includes("Successfully")){

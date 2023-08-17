@@ -38,13 +38,13 @@ public class RegistrationService {
 			
 			insertCollegeNames(registration.getStudents());
 			
-			alterIdIncrementValues();
+//			alterIdIncrementValues();
 			
 			Registration savedRegistration = registrationRepo.save(registration);
 			
 			if(savedRegistration!=null) {
 				
-				emailSender.sendEmail(savedRegistration);
+//				emailSender.sendEmail(savedRegistration);
 				
 				message = "Successfully Registered. Your Registration Id: "+ savedRegistration.getRegistrationId();
 				

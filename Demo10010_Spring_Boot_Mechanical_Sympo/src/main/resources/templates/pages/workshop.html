@@ -1,9 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib  uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -266,41 +262,41 @@
                     <div class="card suggestion_form" id="suggestion-form">
                         <div class="card-header" id="suggestion-form-title"><span>Suggestion Box</span></div>
                         <div class="card-body">
-                            <form:form action="/workshop/sendSuggestion" method="post" autocomplete="off" id="suggestion_form_label_input" onsubmit="return validateSuggestionForm(this)" novalidate="true" modelAttribute="suggestion">
+                            <form action="#" th:action="@{/workshop/sendSuggestion}" th:method="post" autocomplete="off" id="suggestion_form_label_input" onsubmit="return validateSuggestionForm(this)" novalidate th:object="${suggestion}">
                                 <div class="mb-3">
                                     <label class="form-label" for="fullName">Full Name <span class="text-danger">*</span></label>
-                                    <form:input class="form-control" type="text" id="fullName" name="name" placeholder="Enter your name" pattern="^(?!\.)(?!.*\.$)(?!.*\.\.)([a-zA-Z.]+([\s][a-zA-Z.]+)*){2,}" required="required" path="${suggestion.name}"/>
+                                    <input class="form-control" type="text" id="fullName" name="name" placeholder="Enter your name" pattern="^(?!\.)(?!.*\.$)(?!.*\.\.)([a-zA-Z.]+([\s][a-zA-Z.]+)*){2,}" required="required" th:field="*{name}">
                                     <div class="valid-feedback">Valid Name</div>
                                     <div class="invalid-feedback">Invalid Name</div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="mobile">Mobile No. <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="tel" id="mobile" name="mobileNo" pattern="[0-9]{10}" placeholder="10 digit Mobile number" required="required" path="${suggestion.mobileNo}"/>
+                                    <input class="form-control" type="tel" id="mobile" name="mobileNo" pattern="[0-9]{10}" placeholder="10 digit Mobile number" required="required" th:field="*{mobileNo}">
                                     <div class="valid-feedback">Valid Mobile No.</div>
                                     <div class="invalid-feedback">Invalid Mobile No.</div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="email">E-Mail Address <span class="text-danger">*</span></label>
-                                    <form:input class="form-control" type="email" id="email" name="emailId" placeholder="Enter your Gmail address" pattern="^(?!\.)(?!.*\.$)(?!.*?\.\.)[a-z0-9]+[a-z.0-9]*[a-z]+[a-z.0-9]*[a-z0-9]+@gmail\.com$" required="required" path="${suggestion.emailId}"/>
+                                    <input class="form-control" type="email" id="email" name="emailId" placeholder="Enter your Gmail address" pattern="^(?!\.)(?!.*\.$)(?!.*?\.\.)[a-z0-9]+[a-z.0-9]*[a-z]+[a-z.0-9]*[a-z0-9]+@gmail\.com$" required="required" th:field="*{emailId}">
                                     <div class="valid-feedback" id="valid_msg">Valid Email</div>
                                     <div class="invalid-feedback" id="invalid_msg">Invalid Email</div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="suggestion">Message <span class="text-danger">*</span></label>
-                                    <form:textarea class="form-control" name="message" id="suggestion" rows="5" placeholder="Enter your message" required="required" path="${suggestion.message}"></form:textarea>
+                                    <textarea class="form-control" name="message" id="suggestion" rows="5" placeholder="Enter your message" required="required" th:field="*{message}"></textarea>
                                     <div class="valid-feedback">Thanks for your Suggestion</div>
                                     <div class="invalid-feedback">Enter your Suggestion</div>
                                 </div>
                                 <div class="mb-3 mt-5">
                                     <button type="submit" class="btn" id="suggestionSubmitButton">Submit</button>
                                 </div>
-                            </form:form>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="d-flex justify-content-center mt-5 mt-md-0 map-section">
-                        <iframe id = "map" width="450" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=ACGCET,%20Karaikudi&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <iframe id="map" width="450" height="450" src="https://maps.google.com/maps?q=ACGCET,%20Karaikudi&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -368,11 +364,14 @@
         }
     </script>
     
-    	<script>
+    	<script th:inline="javascript">
 	
     window.onload = function(){
     	
-    	var msg = "${message}";
+    	/*<![CDATA[*/
+
+    	var msg = [[${message}]];
+    	/*]]>*/
     	let toastElement = document.getElementById("toastElement");
     	
     	if(msg.includes("Successfully")){
