@@ -1,9 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
-<%@ taglib  uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -155,40 +151,39 @@
                                     <div id="fuelForm">
                                         <div class="row mt-3 text-start">
                                             <div class="col-12">
-                                                <form:form action="saveRegistration" method="post" class="registration-form" id="fuel-registration-form" autocomplete="off" onsubmit="return validateRegistrationForm(this)" novalidate = "true" modelAttribute="registration">
+                                                <form th:action="@{saveRegistration}" th:method="post" class="registration-form" id="fuel-registration-form" autocomplete="off" onsubmit="return validateRegistrationForm(this)" novalidate th:object="${registration}">
 
                                                     <div class="form-group input-field row align-items-center">
                                                         <label for="type" class="col-sm-4 col-form-label" style="display: none;">Type</label>
                                                         <div class="col-sm-8">
-                                                            <form:input type="text" class="form-control" id="type" name = "type" value="Fuel" style="display: none;" path="${registration.type}"/>
+                                                            <input type="text" class="form-control" id="type" name = "type" th:value="Fuel" style="display: none;">
                                                         </div>
                                                     </div>
                         
                                                     <div class="form-group input-field row mt-3 align-items-center">
                                                         <label for="fuel-event_name" class="col-sm-4 col-form-label">Event Name</label>
                                                         <div class="col-sm-8">
-                                                            <form:select id="fuel-event_name" name="name" class="form-select select_name"  path="${registration.name}" oninput="declareInput()">
-                                                                <form:option value="">Select Event</form:option>
-                                                                <form:option value="Paper Presentation">Paper Presentation</form:option>
-                                                                <form:option value="CAD Modelling">CAD Modelling</form:option>
-                                                                <form:option value="Water Rocket">Water Rocket/Aquafly</form:option>
-                                                                <form:option value="Inquizitive">Inquizitive</form:option>
-                                                                <form:option value="Welding">Welding</form:option>
-                                                                <form:option value="RC Car">RC Car</form:option>
-                                                                <form:option value="Foundry">Foundry/Casting</form:option>
-                                                                <form:option value="Assemble and Dismantle">Assemble and Dismantle</form:option>
-                                                                <form:option value="Scrap Master">Scrap Master</form:option>
-                                                                <form:option value="Flat Boat">Flat Boat</form:option>
-                                                            </form:select>
+                                                            <select id="fuel-event_name" name="name" class="form-select select_name"  th:field="*{name}" oninput="declareInput()">
+                                                                <option value="">Select Event</option>
+                                                                <option value="Paper Presentation">Paper Presentation</option>
+                                                                <option value="CAD Modelling">CAD Modelling</option>
+                                                                <option value="Water Rocket">Water Rocket/Aquafly</option>
+                                                                <option value="Inquizitive">Inquizitive</option>
+                                                                <option value="Welding">Welding</option>
+                                                                <option value="RC Car">RC Car</option>
+                                                                <option value="Foundry">Foundry/Casting</option>
+                                                                <option value="Assemble and Dismantle">Assemble and Dismantle</option>
+                                                                <option value="Scrap Master">Scrap Master</option>
+                                                                <option value="Flat Boat">Flat Boat</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     
-                                                    <jsp:include page="Participant_Details.jsp">
-                                                    <jsp:param name="students[]" value="${registration.students}" />
-                                                    </jsp:include>
+                                                    <div th:include="Participant_Details :: participantDetails" th:with="students[]=${students}"></div>
+
                                                     
                                                    
-                                                </form:form>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -211,38 +206,36 @@
                                     <div id="shacklesForm">
                                         <div class="row mt-3 text-start">
                                             <div class="col-12">
-                                                <form:form action="saveRegistration" method="post" class="registration-form" id="shackles-registration-form" autocomplete="off" onsubmit="return validateRegistrationForm(this)" modelAttribute="registration" novalidate = "true">
+                                                <form action="#" th:action="@{saveRegistration}" method="post" class="registration-form" id="shackles-registration-form" autocomplete="off" onsubmit="return validateRegistrationForm(this)" th:object="${registration}" novalidate>
 
                                                     <div class="form-group input-field row align-items-center">
                                                         <label for="type" class="col-sm-4 col-form-label" style="display: none;">Type</label>
                                                         <div class="col-sm-8">
-                                                            <form:input type="text" class="form-control" id="type" name = "type" value="Shackles" path="${registration.type}" style="display: none;"/>
+                                                            <input type="text" class="form-control" id="type" name = "type" th:value="Shackles" style="display: none;"/>
                                                         </div>
                                                     </div>
                         
                                                     <div class="form-group input-field row mt-3 align-items-center">
                                                         <label for="shackles-event_name" class="col-sm-4 col-form-label">Event Name</label>
                                                         <div class="col-sm-8">
-                                                            <form:select id="shackles-event_name" name="name" class="form-select select_name"  path="${registration.name}" oninput="declareInput()">
-                                                                <form:option value="">Select Event</form:option>
-                                                                <form:option value="Paper Presentation">Paper Presentation</form:option>
-                                                                <form:option value="CAD Modelling">CAD Modelling</form:option>
-                                                                <form:option value="Water Rocket">Water Rocket/Aquafly</form:option>
-                                                                <form:option value="Inquizitive">Inquizitive</form:option>
-                                                                <form:option value="Welding">Welding</form:option>
-                                                                <form:option value="Foundry">Foundry/Casting</form:option>
-                                                                <form:option value="Assemble and Dismantle">Assemble and Dismantle</form:option>
-                                                            </form:select>
+                                                            <select id="shackles-event_name" name="name" class="form-select select_name"  th:field="*{name}" oninput="declareInput()">
+                                                                <option value="">Select Event</option>
+                                                                <option value="Paper Presentation">Paper Presentation</option>
+                                                                <option value="CAD Modelling">CAD Modelling</option>
+                                                                <option value="Water Rocket">Water Rocket/Aquafly</option>
+                                                                <option value="Inquizitive">Inquizitive</option>
+                                                                <option value="Welding">Welding</option>
+                                                                <option value="Foundry">Foundry/Casting</option>
+                                                                <option value="Assemble and Dismantle">Assemble and Dismantle</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     
-                                                                                                        <jsp:include page="Participant_Details.jsp">
-                                                    <jsp:param name="students[]" value="${registration.students}" />
-                                                    </jsp:include>
+                                                                                                        <div th:include="Participant_Details :: participantDetails" th:with="students[]=${students}"></div>
 
                                                     <!-- <div class="fetch_paticipant-details"></div> -->
            
-                                                </form:form>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>       
@@ -265,34 +258,32 @@
                                     <div id="workshopForm">
                                         <div class="row mt-3 text-start">
                                             <div class="col-12">
-                                                <form:form action="saveRegistration" method="post" class="registration-form" id="workshop-registration-form" autocomplete="off" modelAttribute="registration" onsubmit="return validateRegistrationForm(this)" novalidate = "true">
+                                                <form action="#" th:action="@{saveRegistration}" th:method="post" class="registration-form" id="workshop-registration-form" autocomplete="off" th:object="${registration}" onsubmit="return validateRegistrationForm(this)" novalidate>
 
                                                     <div class="form-group input-field row align-items-center">
                                                         <label for="type" class="col-sm-4 col-form-label" style="display: none;">Type</label>
                                                         <div class="col-sm-8">
-                                                            <form:input type="text" class="form-control" id="type" name = "type" path="${registration.type}" value="Workshop" style="display: none;"/>
+                                                            <input type="text" class="form-control" id="type" name = "type" th:value="Workshop" style="display: none;">
                                                         </div>
                                                     </div>
                         
                                                     <div class="form-group input-field row mt-3 align-items-center">
                                                         <label for="workshop_name" class="col-sm-4 col-form-label">Workshop Name</label>
                                                         <div class="col-sm-8">
-                                                            <form:select id="workshop_name" name="name" class="form-select select_name"  path="${registration.name}" oninput="declareInput()">
-                                                                <form:option value="">Select Workshop</form:option>
-                                                                <form:option value="Electric Vehicle">Electric Vehicle</form:option>
-                                                                <form:option value="Mercedes Engine Diagnosis">Mercedes Engine Diagnosis</form:option>  
-                                                            </form:select>
+                                                            <select id="workshop_name" name="name" class="form-select select_name"  th:field="*{name}" oninput="declareInput()">
+                                                                <option value="">Select Workshop</option>
+                                                                <option value="Electric Vehicle">Electric Vehicle</option>
+                                                                <option value="Mercedes Engine Diagnosis">Mercedes Engine Diagnosis</option>  
+                                                            </select>
                                                         </div>
                                                     </div>
                                                 
-                                                <jsp:include page="Participant_Details.jsp">
-                                                    <jsp:param name="students[]" value="${registration.students}" />
-                                                    </jsp:include>   
+<div th:include="Participant_Details :: participantDetails" th:with="students[]=${students}"></div> 
                         
                                                    <!-- <div class="fetch_paticipant-details"></div> -->
                                                    
 
-                                                </form:form>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>       
@@ -314,41 +305,41 @@
                     <div class="card suggestion_form" id="suggestion-form">
                         <div class="card-header" id="suggestion-form-title"><span>Suggestion Box</span></div>
                         <div class="card-body">
-                            <form:form action="/register/sendSuggestion" method="post" autocomplete="off" id="suggestion_form_label_input" onsubmit="return validateSuggestionForm(this)" novalidate="true" modelAttribute="suggestion">
+                            <form action="#" th:action="@{/register/sendSuggestion}" th:method="post" autocomplete="off" id="suggestion_form_label_input" onsubmit="return validateSuggestionForm(this)" novalidate th:object="${suggestion}">
                                 <div class="mb-3">
                                     <label class="form-label" for="fullName">Full Name <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="text" id="fullName" name="fName" placeholder="Enter your name" pattern="[A-Za-z]+" required>
+                                    <input class="form-control" type="text" id="fullName" name="name" placeholder="Enter your name" pattern="^(?!\.)(?!.*\.$)(?!.*\.\.)([a-zA-Z.]+([\s][a-zA-Z.]+)*){2,}" required="required" th:field="*{name}">
                                     <div class="valid-feedback">Valid Name</div>
                                     <div class="invalid-feedback">Invalid Name</div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="mobile">Mobile No. <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="tel" id="mobile" name="mobileNo" pattern="[0-9]{10}" placeholder="10 digit Mobile number" required>
+                                    <input class="form-control" type="tel" id="mobile" name="mobileNo" pattern="[0-9]{10}" placeholder="10 digit Mobile number" required="required" th:field="*{mobileNo}">
                                     <div class="valid-feedback">Valid Mobile No.</div>
                                     <div class="invalid-feedback">Invalid Mobile No.</div>
                                 </div>
-                                <div class="mb-3" id="email-input-group">
+                                <div class="mb-3">
                                     <label class="form-label" for="email">E-Mail Address <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="email" id="email" name="emailId" placeholder="Enter your Gmail address" pattern="^(?!\.)(?!.*\.$)(?!.*?\.\.)[a-z0-9]+[a-z.0-9]*[a-z]+[a-z.0-9]*[a-z0-9]+@gmail\.com$" required>
+                                    <input class="form-control" type="email" id="email" name="emailId" placeholder="Enter your Gmail address" pattern="^(?!\.)(?!.*\.$)(?!.*?\.\.)[a-z0-9]+[a-z.0-9]*[a-z]+[a-z.0-9]*[a-z0-9]+@gmail\.com$" required="required" th:field="*{emailId}">
                                     <div class="valid-feedback" id="valid_msg">Valid Email</div>
                                     <div class="invalid-feedback" id="invalid_msg">Invalid Email</div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="suggestion">Message <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="message" id="suggestion" rows="5" placeholder="Enter your message" required></textarea>
+                                    <textarea class="form-control" name="message" id="suggestion" rows="5" placeholder="Enter your message" required="required" th:field="*{message}"></textarea>
                                     <div class="valid-feedback">Thanks for your Suggestion</div>
                                     <div class="invalid-feedback">Enter your Suggestion</div>
                                 </div>
                                 <div class="mb-3 mt-5">
                                     <button type="submit" class="btn" id="suggestionSubmitButton">Submit</button>
                                 </div>
-                            </form:form>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="d-flex justify-content-center mt-5 mt-md-0 map-section">
-                        <iframe id = "map" width="450" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=ACGCET,%20Karaikudi&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <iframe width="450" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=ACGCET,%20Karaikudi&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     </div>
                 </div>
             </div>
@@ -382,7 +373,7 @@
         }
     </script>
     
-  <%--   <c:choose>
+<!--   <%--   <c:choose>
 	    <c:when test="${type == 'Fuel'}">
 	        <script>
 		   		document.getElementById("section-fuel-tab").click();
@@ -421,7 +412,7 @@
 		    </script> 
 	        <br />
 	    </c:when>    
-	</c:choose> --%>
+	</c:choose> --%> -->
 
 
     <script>
@@ -474,9 +465,12 @@
         }
     </script>
     
-	<script>
+	<script th:inline="javascript">
     	window.onload = function(){
-    	var msg = "${message}";
+        	/*<![CDATA[*/
+
+        	var msg = [[${message}]];
+        	/*]]>*/
     	let toastElement = document.getElementById("toastElement");
     	
     	if(msg.includes("Successfully")){
@@ -516,14 +510,15 @@
     }
     </script>
     
-        <script>
+        <script th:inline="javascript">
     window.onload = function(){
-    	var type= "${type}";
-    	console.log("Hiello");
-    	console.log(type)
+    	/*<![CDATA[*/
+
+    	var type = [[${type}]];
+    	var typeName = [[${typeName}]];
+    	/*]]>*/
     	if(type.includes("Fuel")){
     		document.getElementById("section-fuel-tab").click();
-	   		var typeName = "${typeName}";
 	   		if(typeName!=null||typeName!=""){
 	   			var el = document.querySelector('#fuel-event_name');
 	   			el.value = typeName;
@@ -534,7 +529,6 @@
     	}
     	else if(type.includes("Shackles")){
     		document.getElementById("section-shackles-tab").click();
-	   		var typeName = "${typeName}";
 	   		if(typeName!=null||typeName!=""){
 	   			var el = document.querySelector('#shackles-event_name');
 	   			el.value = typeName;
@@ -545,7 +539,6 @@
     	}
     	else if(type.includes("Workshop")){
     		document.getElementById("section-workshop-tab").click();
-	   		var typeName = "${typeName}";
 	   		if(typeName!=null||typeName!=""){
 	   			var el = document.querySelector('#workshop_name');
 	   			el.value = typeName;

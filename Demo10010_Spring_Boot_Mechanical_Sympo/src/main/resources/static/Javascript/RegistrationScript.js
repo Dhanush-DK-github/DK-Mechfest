@@ -17,8 +17,6 @@ const workshop = ["Electric Vehicle", "Mercedes Engine Diagnosis"];
 var activeForm = document.querySelector("#fuel-registration-form");
 
 function declareInput(){
-	
-		console.log("declareInput");
 
         var selectFuelEvent = $("#fuel-event_name").val();
         var selectShacklesEvent = $("#shackles-event_name").val();

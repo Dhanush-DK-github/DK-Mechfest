@@ -118,6 +118,7 @@ public class MainController {
 		model.addAttribute("message", message);
 		
 		model.addAttribute("suggestion", new Suggestion());
+		System.out.println(typeName);
 		
 		return "registration";
 	}
@@ -191,6 +192,7 @@ public class MainController {
 		else {
 			return "redirect:/register";
 		}
+
 	}
 	
 	@PostMapping(value = "/{page}/sendSuggestion")
