@@ -197,7 +197,7 @@ section span b{
 @media (max-width: 1200px){
     html{
         /* font-size: 55%; */
-        font-size: 85%;
+        font-size: 80%;
     }
     body {
         overflow-x: hidden !important;
@@ -213,7 +213,7 @@ section span b{
 @media (max-width: 450px){
     html{
         /* font-size: 40%; */
-        font-size: 65%;
+        font-size: 60%;
     }
 
     .mechFest_logo{
