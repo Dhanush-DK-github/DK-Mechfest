@@ -18,6 +18,8 @@
     --second-text-color:#111D4A;
     --main-color: #FEA82F;
     --main-color-dark: #ff9500;
+    --main-color-dark-N: #cb7702;
+    --main-color-dark-B: #ff9500;
 }
 
 body{
@@ -65,8 +67,14 @@ span{
     color: var(--main-color);
 }
 
-section span{
-    color: var(--main-color-dark);
+section p span, section h4 span{
+    color: var(--main-color-dark-N);
+    letter-spacing: 0.11rem;
+}
+
+section span b{
+    color: var(--main-color-dark-B);
+    letter-spacing: 0.11rem;
 }
 
 #myNavBar a{
@@ -205,7 +213,7 @@ section span{
 @media (max-width: 450px){
     html{
         /* font-size: 40%; */
-        font-size: 60%;
+        font-size: 65%;
     }
 
     .mechFest_logo{
@@ -226,5 +234,10 @@ section span{
 
 } 
 
+@media (max-width: 350px){
+    html{
+        font-size: 40%;
+    }
+}
 
 
