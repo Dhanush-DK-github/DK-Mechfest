@@ -48,16 +48,16 @@
 		    <artifactId>postgresql</artifactId>
 		    <scope>runtime</scope>
 		</dependency>
-<!-- 	<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency> -->
+			<!-- <scope>provided</scope> -->
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
-<!-- 		<dependency>
+		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency> -->		
+		</dependency>		
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
