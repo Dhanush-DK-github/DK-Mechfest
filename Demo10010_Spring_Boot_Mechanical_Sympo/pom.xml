@@ -26,14 +26,11 @@
 		<!-- <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency> -->
-
-		
+		</dependency> -->		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -51,8 +48,7 @@
 		    <artifactId>postgresql</artifactId>
 		    <scope>runtime</scope>
 		</dependency>
-		
-<!-- 		<dependency>
+<!-- 	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
@@ -61,16 +57,13 @@
 <!-- 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency> -->
-		
+		</dependency> -->		
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-thymeleaf</artifactId>
-</dependency>
-		
-		
-<!-- 		<dependency>     
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+<!-- 	<dependency>     
 			<groupId>org.apache.tomcat.embed</groupId>     
 			<artifactId>tomcat-embed-jasper</artifactId>     
 			<scope>provided</scope>   
@@ -83,22 +76,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
-		 <!-- <dependency>
-    		<groupId>org.springframework</groupId>
-    		<artifactId>spring-context-support</artifactId>
-		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<!-- 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency> -->
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -107,5 +90,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
